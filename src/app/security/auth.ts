@@ -5,6 +5,7 @@ import { saltAndHashPassword } from "@/app/utils/password"
 import { debugGetPlanets, getUser } from "@/app/utils/springApiCalls"
 import { signInSchema } from "@/app/security/zod"
 import { ZodError } from "zod"
+//import { User } from "@/app/types/types";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
 	providers: [
@@ -42,8 +43,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 					// Logic to if no user found maybe invite to register
 	
 					// return user object with their profile data
+
 					return {
                         id: response.userId,
+						token: response.token,
                         email: response.email,
                         name: response.username,
                         role: response.role,
@@ -62,6 +65,28 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
 		}),
 	],
     pages: {
-        signIn: '@/app/login', // Custom sign-in page
+        signIn: '/pages/login', // Custom sign-in page
     },
-})
+    callbacks: {
+        async jwt({ token, user }) {
+            // Include additional properties in the JWT token
+            if (user) {
+                token.id = user.id;
+                token.token = user.token;
+                token.role = user.role;
+                token.name = user.name;
+            }
+            return token;
+        },
+        async session({ session, token }) {
+            // Include additional properties in the session object
+            if (token) {
+                session.user.id = token.id as string;
+                session.user.token = token.token as string;
+                session.user.role = token.role as string;
+                session.user.name = token.name as string;
+            }
+            return session;
+        },
+    },
+});

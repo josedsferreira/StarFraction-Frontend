@@ -3,15 +3,6 @@ import axios from 'axios';
 const API_BASE_URL = 'http://localhost:8080'; // Replace with your actual API base URL
 // HTTP NOT HTTPS!!
 
-/* interface User {
-	userId: string;
-	email: string;
-	username: string;
-	role: string;
-	token: string;
-	// Add any other fields you need
-} */
-
 export async function getUser(email: string, password: string) {
 	/* console.log("getUser called")
 	console.log("email: ", email)

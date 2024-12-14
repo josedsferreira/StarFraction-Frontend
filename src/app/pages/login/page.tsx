@@ -13,8 +13,9 @@ export default function Login() {
                     action={async (formData) => {
                         "use server"
                         await signIn("credentials", {
-                            email: formData.get('email'),
-                            password: formData.get('password')
+                            email: formData.get("email"),
+                            password: formData.get("password"),
+                            redirectTo: "/pages/dashboard", // Redirect to the dashboard after login
                         });
                     }}
                 >
