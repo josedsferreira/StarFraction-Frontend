@@ -1,4 +1,11 @@
 
+export interface Planet {
+    planetId: number;
+    planetName: string;
+    planetSize: string;
+}
+
+
 // this is being used in auth.ts in the return from the signin and in username.tsx but probably is not
 // needed anymore as we have altered the default user object in next-auth.d.ts
 /* export interface User {

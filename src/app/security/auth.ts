@@ -17,7 +17,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
                 password: { label: "Password", type: "password" },
 			},
 			authorize: async (credentials) => {
-			try {
+				try {
 					//debugGetPlanets()
 
 					/* console.log("credentials: ")
@@ -73,6 +73,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             if (user) {
                 token.id = user.id;
                 token.token = user.token;
+				token.email = user.email;
                 token.role = user.role;
                 token.name = user.name;
             }
@@ -83,6 +84,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
             if (token) {
                 session.user.id = token.id as string;
                 session.user.token = token.token as string;
+				session.user.email = token.email as string;
                 session.user.role = token.role as string;
                 session.user.name = token.name as string;
             }

@@ -31,6 +31,23 @@ export async function getUser(email: string, password: string) {
     }
 }
 
+export async function getPlanets(token: string) {
+	console.log("getPlanets called")
+	try {
+		const response = await axios.get(`${API_BASE_URL}/planets`, {
+			headers: {
+				'Authorization': `Bearer ${token}`
+			}
+		});
+
+		console.log("Data Response: ", response.data)
+		return response.data;
+  	} catch (error) {
+		console.error('Error fetching planets debug:', error);
+		return null;
+	}
+}
+
 export async function debugGetPlanets() {
 	console.log("debugGetPlanets called")
 	try {
