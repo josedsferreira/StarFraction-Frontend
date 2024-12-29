@@ -1,5 +1,4 @@
-import PlanetList from "@/app/components/planetList";
-import Username from "@/app/components/planetList";
+import UserPlanetList from "@/app/components/user/userPlanetList";
 
 export default function Planets() {
     return (
@@ -9,7 +8,7 @@ export default function Planets() {
                 
             </div>
             <div className='flex flex-col items-center'>
-                <PlanetList />
+                <UserPlanetList />
             </div>
         </div>
     );

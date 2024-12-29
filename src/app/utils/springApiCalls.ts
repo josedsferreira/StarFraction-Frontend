@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { auth } from '../security/auth';
+import { getUserFromSession, getUserIdFromSession } from './utilities';
 
 const API_BASE_URL = 'http://localhost:8080'; // Replace with your actual API base URL
 // HTTP NOT HTTPS!!
@@ -31,7 +33,19 @@ export async function getUser(email: string, password: string) {
     }
 }
 
-export async function getPlanets(token: string) {
+export async function getPlanets() {
+	const session = await auth()
+ 
+    if (!session?.user) {
+        console.log('No user session found')
+        return null
+    }
+
+    const user = session.user;
+
+    //console.log('User:', user)
+
+    const token = user.token;
 	console.log("getPlanets called")
 	try {
 		const response = await axios.get(`${API_BASE_URL}/planets`, {
@@ -59,5 +73,30 @@ export async function debugGetPlanets() {
   	} catch (error) {
 		console.error('Error fetching planets debug:', error);
 		return null;
+	}
+}
+
+export async function getUserPlanets() {
+	const user = await getUserFromSession();
+	if (!user) {
+		console.log('No user session found');
+		return null;
+	}
+	else {
+		const token = user.token;
+		const userId = user.id;
+		try {
+			const response = await axios.get(`${API_BASE_URL}/users/userplanets/${userId}`, {
+				headers: {
+					'Authorization': `Bearer ${token}`
+				}
+			});
+
+			console.log("Data Response: ", response.data)
+			return response.data;
+		} catch (error) {
+			console.error('Error fetching planets debug:', error);
+			return null;
+		}
 	}
 }

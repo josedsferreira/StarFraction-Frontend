@@ -1,12 +1,15 @@
-import { auth } from "@/app/security/auth"
-import { getPlanets } from "@/app/utils/springApiCalls"
+import { getPlanets, getUserPlanets } from "@/app/utils/springApiCalls"
 import { Planet } from "@/app/types/types"
  
-export default async function PlanetList() {
+export default async function UserPlanetList() {
     
-    const planets = await getPlanets()
+    const planets = await getUserPlanets()
 
- 
+    if (!planets) {
+        console.log('No planets found')
+        return (<p>No planets found</p>)
+    }
+
     return (
         <ul>
             {planets.map((planet: Planet) => (
