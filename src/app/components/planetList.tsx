@@ -6,7 +6,7 @@ export default async function PlanetList() {
     
     const planets = await getPlanets()
 
- 
+
     return (
         <ul>
             {planets.map((planet: Planet) => (
