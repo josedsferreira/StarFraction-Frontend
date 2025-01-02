@@ -1,20 +1,23 @@
+import ResourceCard from "@/app/components/resourceCard";
+import { getUserPlanets } from "@/app/utils/springApiCalls";
 
 
-export default function Dashboard() {
+export default async function Dashboard() {
+    
+    const planetList = await getUserPlanets(); // need to get only active planet
+    if (!planetList) {
+        return <div>Loading...</div>;
+    }
+    const [activePlanet] = planetList || [];
+
     return (
-        <div>
-            <h1>Resources</h1>
-        {/*
-            <div className='flex flex-col items-center'>
-                <h1 className="m-5 text-xl">StarFraction</h1>
-                <h3>Dashboard</h3>
-                <Username />
+        <div className="flex flex-col">
+            <h1 className="m-2">Resources</h1>
+            <div className="flex flex-row gap-x-10 m-2">
+                <ResourceCard resourceName="Metal" resourceAmount={activePlanet.planetBuildings.metalAmount} />
+                <ResourceCard resourceName="Crystal" resourceAmount={activePlanet.planetBuildings.crystalAmount} />
+                <ResourceCard resourceName="Deuterium" resourceAmount={activePlanet.planetBuildings.deuteriumAmount} />
             </div>
-            <div className='flex flex-col items-center'>
-                <Link className="btn m-2 " href="/pages/planets">Planets</Link>
-            </div>
-        */}
-        
         </div>
     );
 }
