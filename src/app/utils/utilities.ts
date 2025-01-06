@@ -1,4 +1,5 @@
 import { auth } from "../security/auth";
+import { getUserPlanets } from "./springApiCalls";
 
 
 export async function getUserIdFromSession() {

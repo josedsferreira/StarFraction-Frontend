@@ -1,0 +1,49 @@
+/* Override */
+
+:root {
+  --background: #fff;
+  --foreground: #000;
+  --border-color: #aaa;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --border-color: #555;
+  }
+}
+
+.react-tabs {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.react-tabs__tab-list {
+  border-bottom: 1px solid var(--border-color);
+  margin: 0 0 10px;
+  padding: 0;
+}
+
+.react-tabs__tab {
+  display: inline-block;
+  border: 1px solid transparent;
+  border-bottom: none;
+  bottom: -1px;
+  position: relative;
+  list-style: none;
+  padding: 6px 12px;
+  cursor: pointer;
+  color: var(--foreground);
+}
+
+.react-tabs__tab--selected {
+  background: var(--background);
+  border-color: var(--border-color);
+  color: var(--foreground);
+  border-radius: 5px 5px 0 0;
+}
+
+.react-tabs__tab--disabled {
+  color: GrayText;
+  cursor: default;
+}

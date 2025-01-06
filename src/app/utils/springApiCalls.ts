@@ -92,11 +92,35 @@ export async function getUserPlanets() {
 				}
 			});
 
-			console.log("Data Response: ", response.data)
+			//console.log("Data Response: ", response.data)
 			return response.data;
 		} catch (error) {
 			console.error('Error fetching planets debug:', error);
 			return null;
 		}
+	}
+}
+
+export async function getUserPlanetsClient(token: string, userId: string) {
+	try {
+		const response = await axios.get(`${API_BASE_URL}/users/userplanets/${userId}`, {
+			headers: {
+				'Authorization': `Bearer ${token}`
+			}
+		});
+		//console.log("Data Response: ", response.data)
+		return response.data;
+	} catch (error) {
+        if (axios.isAxiosError(error)) {
+            console.error('Axios error message:', error.message);
+            if (error.response) {
+                console.error('Axios error response data:', error.response.data);
+                console.error('Axios error response status:', error.response.status);
+                console.error('Axios error response headers:', error.response.headers);
+        } else {
+            console.error('Unexpected error:', error);
+        }
+        return null;
+    	}
 	}
 }

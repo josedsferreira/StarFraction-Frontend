@@ -10,7 +10,8 @@ export default function SideNav() {
                 <Logo width={100} height={100}/>
             </div>
             <div className='menu flex flex-col items-center'>
-                <Link className="btn m-2 " href="/pages/planets">Build</Link>
+                <Link className="btn m-2 " href="/pages/dashboard">Overview</Link>
+                <Link className="btn m-2 " href="/pages/dashboard/build">Build</Link>
             </div>
         </div>
     );
