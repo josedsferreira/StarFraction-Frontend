@@ -1,6 +1,6 @@
 "use client";
 
-import ResourceCard from "@/app/components/resourceCard";
+import ResourceCard from "@/app/components/resource/resourceCard";
 import { Planet } from "@/app/types/types";
 import { getUserPlanets, getUserPlanetsClient } from "@/app/utils/springApiCalls";
 import { getUserFromSession } from "@/app/utils/utilities";
@@ -10,10 +10,11 @@ import { Tabs, TabList, Tab, TabPanel } from "react-tabs";
 import "@/app/styles/custom-tabs.css";
 import { auth } from "../security/auth";
 import { getSession } from "next-auth/react";
-import PlanetCard from "@/app/components/planetCard";
+import PlanetCard from "@/app/components/planet/planetCard";
+import ResourcePanel from "@/app/components/resource/resourcePanel";
 
 export default function Dashboard() {
-    //console.log("Dashboard called");
+    console.log("Dashboard called");
     const [planetList, setPlanetList] = useState<Planet[] | null>(null);
 
     useEffect(() => {
@@ -42,14 +43,7 @@ export default function Dashboard() {
 
                     {planetList.map((planet: Planet, index: number) => (
                         <TabPanel key={index}>
-                            <div className="flex flex-col">
-                                <h1 className="m-2">Resources</h1>
-                                <div className="flex flex-row gap-x-10 m-2">
-                                    <ResourceCard resourceName="Metal" resourceAmount={planet.planetBuildings.metalAmount} />
-                                    <ResourceCard resourceName="Crystal" resourceAmount={planet.planetBuildings.crystalAmount} />
-                                    <ResourceCard resourceName="Deuterium" resourceAmount={planet.planetBuildings.deuteriumAmount} />
-                                </div>
-                            </div>
+                            <ResourcePanel {...planet} />
                         </TabPanel>
                     ))}
                 </Tabs>

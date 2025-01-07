@@ -1,12 +1,13 @@
+import Logo from "@/app/components/logo";
 import { signIn } from "@/app/security/auth"
 
 export default function Login() {
     return (
         <main>
-            <h1 className='m-3'>Star Fraction</h1>
             
-                <div className='flex flex-col items-center'>
-                {/* <h3 className="m-3">Login</h3> */}
+            <div className='flex flex-col items-center'>
+
+                <Logo width={300} height={300}/>
 
                 <form 
                     className='flex flex-col' 

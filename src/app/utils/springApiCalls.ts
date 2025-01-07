@@ -54,7 +54,7 @@ export async function getPlanets() {
 			}
 		});
 
-		console.log("Data Response: ", response.data)
+		//console.log("Data Response: ", response.data)
 		return response.data;
   	} catch (error) {
 		console.error('Error fetching planets debug:', error);
