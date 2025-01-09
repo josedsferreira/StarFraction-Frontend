@@ -25,6 +25,39 @@ export interface Planet {
     planetBuildings: PlanetBuildings;
 }
 
+export interface PlanetWithDetails {
+    planet: Planet;
+    metalMineMetalUpgradeCost: number;
+    metalMineCrystalUpgradeCost: number;
+    metalProductionUpgrade: number;
+    metalMineEnergyConsumption: number;
+    metalMineUpgradeTime: number;
+    crystalMineMetalUpgradeCost: number;
+    crystalMineCrystalUpgradeCost: number;
+    crystalProductionUpgrade: number;
+    crystalMineEnergyConsumption: number;
+    crystalMineUpgradeTime: number;
+    deuteriumMineMetalUpgradeCost: number;
+    deuteriumMineCrystalUpgradeCost: number;
+    deuteriumProductionUpgrade: number;
+    deuteriumMineEnergyConsumption: number;
+    deuteriumMineUpgradeTime: number;
+    solarPlantMetalUpgradeCost: number;
+    solarPlantCrystalUpgradeCost: number;
+    solarPlantUpgradeTime: number;
+    shipyardMetalUpgradeCost: number;
+    shipyardCrystalUpgradeCost: number;
+    shipyardUpgradeTime: number;
+    labMetalUpgradeCost: number;
+    labCrystalUpgradeCost: number;
+    labUpgradeTime: number;
+}
+
+export interface UpgradeStatus {
+    upgradeFinishTime: string;
+    buildingBeingUpgraded: string;
+}
+
 /* 
 [
     {
@@ -53,14 +86,3 @@ export interface Planet {
 ]
 */
 
-
-// this is being used in auth.ts in the return from the signin and in username.tsx but probably is not
-// needed anymore as we have altered the default user object in next-auth.d.ts
-/* export interface User {
-    id: string;
-    token: string;
-    email: string;
-    name: string;
-    role: string;
-    // Add any other properties your user object should have
-} */

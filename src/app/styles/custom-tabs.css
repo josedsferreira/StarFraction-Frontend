@@ -33,11 +33,11 @@
   list-style: none;
   padding: 6px 12px;
   cursor: pointer;
-  color: var(--foreground);
+  color: var(--foreground); /* sets color of the name text in the tab */
 }
 
 .react-tabs__tab--selected {
-  background: var(--background);
+  background: var(--background); /* sets the background color of the selected tab (the tab, not the tab panel) */
   border-color: var(--border-color);
   color: var(--foreground);
   border-radius: 5px 5px 0 0;
@@ -46,4 +46,5 @@
 .react-tabs__tab--disabled {
   color: GrayText;
   cursor: default;
+  border: none;
 }

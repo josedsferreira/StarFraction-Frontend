@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { Tabs, TabList, Tab, TabPanel } from "react-tabs";
 //import "react-tabs/style/react-tabs.css";
 import "@/app/styles/custom-tabs.css";
+import "@/app/styles/custom-styles.css";
 import { auth } from "../security/auth";
 import { getSession } from "next-auth/react";
 import PlanetCard from "@/app/components/planet/planetCard";
@@ -32,15 +33,18 @@ export default function Dashboard() {
     if (planetList) {
         return (
             <div>
-                <Tabs>
-                    <TabList>
-                        {planetList.map((planet: Planet, index: number) => (
-                                <Tab key={index}>
-                                    <PlanetCard planetName={planet.planetName} isActive={false} />
-                                </Tab>
-                            ))}
-                    </TabList>
-
+                <Tabs defaultIndex={1}>
+                        <TabList>
+                            <Tab disabled>
+                            </Tab>
+                            {planetList.map((planet: Planet, index: number) => (
+                                    <Tab key={index}>
+                                        <PlanetCard planetName={planet.planetName} isActive={false} />
+                                    </Tab>
+                                ))}
+                        </TabList>
+                    
+                    <TabPanel></TabPanel>
                     {planetList.map((planet: Planet, index: number) => (
                         <TabPanel key={index}>
                             <ResourcePanel {...planet} />
@@ -51,6 +55,6 @@ export default function Dashboard() {
         );
     }
     else {
-        return <div>Loading...</div>;
+        return <div className="m-2"><h1>Loading...</h1></div>;
     } 
 }

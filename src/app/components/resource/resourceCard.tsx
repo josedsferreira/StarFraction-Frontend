@@ -50,7 +50,7 @@ export default function ResourceCard({ resourceName, resourceAmount }: ResourceC
     }, [resourceName]);
 
     return (
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center bg-gray-200 dark:bg-gray-700 rounded-lg p-2 m-1 w-40">
             <p className="text-sm m-1">{resourceName}</p>
             <Image
                 src={imageSrc}

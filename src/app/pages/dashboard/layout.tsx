@@ -10,7 +10,7 @@ export default async function Layout({ children }: { children: React.ReactNode }
                 <SideNav />
             </div>
             <div className="flex-grow md:overflow-y-auto">
-                <div className="w-full p-6">
+                <div className="w-full py-2">
                     {children}
                 </div>
             </div>
