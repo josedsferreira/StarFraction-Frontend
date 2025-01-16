@@ -9,6 +9,11 @@ Tecnologies used:
 - Next.js
 - NextAuth.js
 
+## WIP Images:
+<img src="https://github.com/user-attachments/assets/d369faf7-7c6c-427b-b97f-dcf00edf3fe0" alt="Dashboard" width="550" />
+<img src="https://github.com/user-attachments/assets/9136c124-1645-4554-9d67-370f9587fc3e" alt="Build menu" width="550" />
+
+
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
